@@ -7,7 +7,7 @@ import Home from "./components/Home";
 
 
 
-function App({home}) {
+function App() {
 
  
 

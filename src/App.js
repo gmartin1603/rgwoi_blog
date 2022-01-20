@@ -1,25 +1,56 @@
-import logo from './logo.svg';
-import './App.css';
+import { Link, Outlet, Route, Routes } from "react-router-dom";
+import styled from "styled-components";
+import Article from "./components/Article";
+import ArticleList from "./components/ArticleList";
+import Header from "./components/Header";
+import Home from "./components/Home";
 
-function App() {
+
+
+function App({home}) {
+
+ 
+
+  
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Main>
+      <Header/>
+      <Container>
+        <Outlet/>
+        {/* {
+          articles.map(article => (
+            <div>
+            
+            <Link to={`/${article.title}`} > {article.title} <br /> {article.subtitle} </Link>
+            <Article
+            title={article.title}
+            subtitle={article.subtitle}
+            author={article.author}
+            bio={article.bio}
+            img={article.img}
+            date={article.date}
+            />    
+            </div>
+            ))
+          } */}
+        
+        {/* <Products/> */}
+        {/* <Article/> */}
+      </Container>
+      
+    </Main>
+  )
 }
 
 export default App;
+
+const Main = styled.div`
+background-color: #00A36C;
+width: 100%;
+min-height 100vh;
+
+`
+const Container = styled.div`
+  
+`

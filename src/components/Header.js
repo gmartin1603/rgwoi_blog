@@ -101,6 +101,10 @@ const Logo = styled.div`
     a {
         text-decoration: none;
     }
+    a:visited {
+        text-decoration: none;
+        color: white;
+    }
 `
 const NavContainer = styled.div`
     display: flex;

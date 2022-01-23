@@ -4,9 +4,21 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 function Tile({article, arr}) {
+
+    const buildURL = () => {
+        console.log('run')
+        let url = ``
+        if (article.label) {
+            url = article.url
+        } else {
+            url = `/${arr}/${article.url}`
+        }
+        return url
+    }
+
     return (
         <Main onClick={() => console.log(article.title)}>
-            <Link to={`/${arr}/${article.url}`}>
+            <Link to={buildURL()}>
                 <Card sx={{width: 300, height: 300}}>
                 <CardMedia
                     component="img"
@@ -17,7 +29,7 @@ function Tile({article, arr}) {
                 <Content >
                     <TitleContainer>
                         <h3>
-                            {article.title}
+                            {article.label ? article.label : article.title}
                         </h3>
                         <h4 style={{color: "#6E7172"}}>
                             <i>
@@ -27,7 +39,7 @@ function Tile({article, arr}) {
                     </TitleContainer>
                     <AuthorContainer>
                         
-                        <b>Posted:</b> {new Date(article.date).toDateString()}
+                        <b>{article.label ? "Last Post" : "Posted"}:</b> {new Date(article.date).toDateString()}
                     </AuthorContainer>
                 </Content>
                 </Card>
@@ -40,6 +52,7 @@ export default Tile;
 
 const Main = styled.div`
     margin: 2%;
+    max-width: 300px;
     box-shadow: 5px 5px 10px #000033;
     :hover {
         box-shadow: 10px 10px 20px #000033;

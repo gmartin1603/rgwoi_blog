@@ -7,6 +7,11 @@ export const articles = [
       bio: "This is the Author's bio",
       img: 'https://lh3.googleusercontent.com/vZ0_0coNcwkE5mip46OyP6-NAbVdUNpb-qwuwcrvzuHwZzH_CKKP9XLgzm8NsKl5dM0ae8o5h0PKYr6i1JFUOvi_pqy5bPjYQXGQQLVFg3okIgWCNt4umau4flXp8DMwP1DeOSzBlg=w2400',
       date: 1642355907728,
+      format: 'sbs',
+      overview: "Overview",
+      tools: ['wrench', 'impact'],
+      steps: [{title: "Drain and cover coolant in a clean container for reuse.", body: "Remove the lower cover"}, {title: "Remove upper radiator hose", body: "Hose clamp, wire thing"}],
+      keyPoints: ["Mating surfaces should be clean and smooth", "sdfhsjkhf sdjhfk"],
     },
     {
       title: "2006 Ram 1500 4.7L V8 4X4",

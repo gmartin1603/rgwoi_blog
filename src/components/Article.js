@@ -9,6 +9,99 @@ function Article({title, subtitle, bio, avatar, img, date, author, imgAlt, body}
     const [state, setState] = useState({})
     let params = useParams()
 
+    let objs = [
+        {
+            format: 'sbs',
+            overview: "OverView",
+            tools: ['wrench', 'impact'],
+            steps: {0: "Drain and cover coolant in a clean container for reuse.", 1: "Remove upper radiator hose"},
+            keyPoints: ["Mating surfaces should be clean and smooth", "sdfhsjkhf sdjhfk"]
+        },
+        {
+            format: 'review',
+            overview: "OverView",
+            name: 'Master Pro thing',
+            body: "This is the main portion of the article",
+            pros: ["Mating surfaces should be clean and smooth", "sdfhsjkhf sdjhfk"],
+            cons: ["uuuuum", "yes"],
+        },
+        {
+            format: 'writeUp',
+            overview: "OverView",
+            body: "This is the main portion of the article",
+            tools: ['wrench', 'impact'],
+            keyPoints: ["Mating surfaces should be clean and smooth", "sdfhsjkhf sdjhfk"]
+        },
+    ]
+
+    const buildBody = () => {
+        console.log(state.format)
+        switch (state.format) {
+            case 'sbs':
+                return (
+                    <BodyContainer>
+                        <p>
+                            {state.overview}
+                        </p>
+                        <h4>Tools Needed:</h4>
+                        <ul>
+                            {
+                                state.tools.map(tool => (
+                                    <li key={tool} > {tool} </li>
+                                ))
+                            }
+                        </ul>
+                        <h4>Repair Procedure</h4>
+                        <ol>
+                            {
+                                state.steps &&
+                                state.steps.map((step, i) => (
+                                    <li key={i} >
+                                        {
+                                            step.title
+                                        }
+                                        <br />
+                                        {
+                                            step.body
+                                        }
+                                    </li>
+                                ))
+                            }
+                        </ol>
+                        <h4>Key Take Aways</h4>
+                        <ul>
+                            {
+                                state.keyPoints &&
+                                state.keyPoints.map((item, i) => (
+                                    <li key={i} > {item} </li>
+                                ))
+                            }
+                        </ul>
+                    </BodyContainer> 
+                )
+            case 'writeUp':
+                return (
+                    <BodyContainer>
+
+                    </BodyContainer> 
+                )
+            case 'review':
+                return (
+                    <BodyContainer>
+
+                    </BodyContainer> 
+                )
+            default:
+                return (
+                    <BodyContainer>
+                        <p>
+                            No Body object
+                        </p>
+                    </BodyContainer>
+                )
+        }
+    }
+
     useEffect(() => {
         console.log( "load")
         articles && articles.filter(article => {
@@ -37,22 +130,9 @@ function Article({title, subtitle, bio, avatar, img, date, author, imgAlt, body}
                 </Container>
                 <img src={state.img} alt={state.imgAlt} />
             </ArticleHead>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem quos sit enim porro dolores sapiente ipsa, earum eligendi expedita fugit eveniet perferendis qui ullam odio ex nisi, ut accusamus ipsam.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem quos sit enim porro dolores sapiente ipsa, earum eligendi expedita fugit eveniet perferendis qui ullam odio ex nisi, ut accusamus ipsam.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem quos sit enim porro dolores sapiente ipsa, earum eligendi expedita fugit eveniet perferendis qui ullam odio ex nisi, ut accusamus ipsam.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem quos sit enim porro dolores sapiente ipsa, earum eligendi expedita fugit eveniet perferendis qui ullam odio ex nisi, ut accusamus ipsam.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem quos sit enim porro dolores sapiente ipsa, earum eligendi expedita fugit eveniet perferendis qui ullam odio ex nisi, ut accusamus ipsam.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem quos sit enim porro dolores sapiente ipsa, earum eligendi expedita fugit eveniet perferendis qui ullam odio ex nisi, ut accusamus ipsam.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem quos sit enim porro dolores sapiente ipsa, earum eligendi expedita fugit eveniet perferendis qui ullam odio ex nisi, ut accusamus ipsam.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem quos sit enim porro dolores sapiente ipsa, earum eligendi expedita fugit eveniet perferendis qui ullam odio ex nisi, ut accusamus ipsam.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem quos sit enim porro dolores sapiente ipsa, earum eligendi expedita fugit eveniet perferendis qui ullam odio ex nisi, ut accusamus ipsam.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem quos sit enim porro dolores sapiente ipsa, earum eligendi expedita fugit eveniet perferendis qui ullam odio ex nisi, ut accusamus ipsam.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem quos sit enim porro dolores sapiente ipsa, earum eligendi expedita fugit eveniet perferendis qui ullam odio ex nisi, ut accusamus ipsam.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem quos sit enim porro dolores sapiente ipsa, earum eligendi expedita fugit eveniet perferendis qui ullam odio ex nisi, ut accusamus ipsam.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem quos sit enim porro dolores sapiente ipsa, earum eligendi expedita fugit eveniet perferendis qui ullam odio ex nisi, ut accusamus ipsam.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem quos sit enim porro dolores sapiente ipsa, earum eligendi expedita fugit eveniet perferendis qui ullam odio ex nisi, ut accusamus ipsam.
-            </p>
+            {
+                buildBody()
+            }
         </Paper>
         </Main>
     );
@@ -116,4 +196,7 @@ const AvatarContainer = styled.div`
         padding-left: 5%;
         padding-top: 5%; 
     }
+`
+const BodyContainer = styled.div`
+
 `

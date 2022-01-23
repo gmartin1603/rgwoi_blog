@@ -21,7 +21,9 @@ export const routes = [
                 date: (1642355907728 + (((24 * 60 * 60 * 1000) * 7) * 8)),
               },
         ], 
-        url: '/popular'
+        url: '/popular',
+        subtitle: 'Most viewed posts site-wide',
+        date: (1642355907728 + (((24 * 60 * 60 * 1000) * 7) * 2)),
     }, 
     {
         label: "Latest", 
@@ -36,7 +38,9 @@ export const routes = [
                 date: (1642355907728 + (((24 * 60 * 60 * 1000) * 7) * 5)),
               },
         ], 
-        url: '/latest'
+        url: '/latest',
+        subtitle: '15 newest additions to the collection',
+        date: (1642355907728 + (((24 * 60 * 60 * 1000) * 7) * 2)),
     }, 
     {
         label: "Repair", 
@@ -60,7 +64,9 @@ export const routes = [
                 date: (1642355907728 + (((24 * 60 * 60 * 1000) * 7) * 5)),
               },
         ], 
-        url: '/repair'
+        url: '/repair',
+        subtitle: 'Articles written to provide general and vehical spacific repair procedures',
+        date: (1642355907728 + (((24 * 60 * 60 * 1000) * 7) * 2)),
     }, 
     {
         label: "Fabrication", 
@@ -75,7 +81,9 @@ export const routes = [
                 date: (1642355907728 + (((24 * 60 * 60 * 1000) * 7) * 2)),
             },
         ], 
-        url: '/fab'
+        url: '/fab',
+        subtitle: "Fabrication projects I've taken on",
+        date: (1642355907728 + (((24 * 60 * 60 * 1000) * 7) * 2)),
     }, 
     {
         label: "Tool Reviews", 
@@ -101,6 +109,8 @@ export const routes = [
             },
              
         ], 
-        url: '/tools'
+        url: '/tools',
+        subtitle: 'Reviews of specialty tools I own and use',
+        date: (1642355907728 + (((24 * 60 * 60 * 1000) * 7) * 2)),
     },
 ]

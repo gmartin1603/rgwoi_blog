@@ -52,5 +52,5 @@ min-height 100vh;
 
 `
 const Container = styled.div`
-  
+font-family: 'IBM Plex Serif', serif;
 `

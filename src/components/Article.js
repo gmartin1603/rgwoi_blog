@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useParams } from 'react-router-dom'
 import { articles } from '../data/articles';
+import ListItem from './ListItem';
 
 function Article({title, subtitle, bio, avatar, img, date, author, imgAlt, body}) {
 
@@ -39,11 +40,11 @@ function Article({title, subtitle, bio, avatar, img, date, author, imgAlt, body}
         switch (state.format) {
             case 'sbs':
                 return (
-                    <BodyContainer>
+                    <BodyContainer className="sbs" >
                         <p>
                             {state.overview}
                         </p>
-                        <h4>Tools Needed:</h4>
+                        <h3>Tools Needed:</h3>
                         <ul>
                             {
                                 state.tools.map(tool => (
@@ -51,20 +52,15 @@ function Article({title, subtitle, bio, avatar, img, date, author, imgAlt, body}
                                 ))
                             }
                         </ul>
-                        <h4>Repair Procedure</h4>
+                        <h3>Repair Procedure</h3>
                         <ol>
                             {
                                 state.steps &&
                                 state.steps.map((step, i) => (
-                                    <li key={i} >
-                                        {
-                                            step.title
-                                        }
-                                        <br />
-                                        {
-                                            step.body
-                                        }
-                                    </li>
+                                    <ListItem 
+                                    key={i}
+                                    obj={step}
+                                    />
                                 ))
                             }
                         </ol>
@@ -88,7 +84,9 @@ function Article({title, subtitle, bio, avatar, img, date, author, imgAlt, body}
             case 'review':
                 return (
                     <BodyContainer>
-
+                        <p>
+                            {state.overview}
+                        </p>
                     </BodyContainer> 
                 )
             default:
@@ -155,11 +153,7 @@ const Main = styled.div`
         padding-bottom: 5%;
         font-size: 110%;
     }
-    p::first-letter {
-        font-size: 180%;
-        font-weight: 600;
-        font-style: italic    
-    }
+    
 `
 const Container = styled.div`
     display: flex;
@@ -198,5 +192,12 @@ const AvatarContainer = styled.div`
     }
 `
 const BodyContainer = styled.div`
-
+    padding: 5%;
+    .sbs {
+        p::first-letter {
+            font-size: 180%;
+            font-weight: 600;
+            font-style: italic    
+        }
+    }
 `

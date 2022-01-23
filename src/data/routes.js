@@ -24,6 +24,7 @@ export const routes = [
         url: '/popular',
         subtitle: 'Most viewed posts site-wide',
         date: (1642355907728 + (((24 * 60 * 60 * 1000) * 7) * 2)),
+        img: 'https://lh3.googleusercontent.com/mGNYaU-wZeB-9ygxv7W_7jI-pyVNzRZj7jfNWVqhHs-Y9LEAfof1NBNZjd0f8G7-dQ28cON3qewXRlwob03AE-a1-NHHo0g4WXFj5t9SvsAOM4ke69UQUsVFVocTFGDWQIUpljuYpQ=w2400'
     }, 
     {
         label: "Latest", 
@@ -41,6 +42,7 @@ export const routes = [
         url: '/latest',
         subtitle: '15 newest additions to the collection',
         date: (1642355907728 + (((24 * 60 * 60 * 1000) * 7) * 2)),
+        img: 'https://lh3.googleusercontent.com/3eYHWJazJqNFWe3fDGp_EWKn1GeL_QZcMOr7vOMCqdPL5pw3eCMOBwHbYP8DPC1y_9aoDnxKYVdjpHW4vmdC4cSa0uYW_iHzNPrhi84Ioatb5__o9_DiMrvEIqsXE0vTqxBGBIl16w=w2400',
     }, 
     {
         label: "Repair", 
@@ -53,8 +55,8 @@ export const routes = [
                 bio: "This is the Author's bio",
                 img: 'https://lh3.googleusercontent.com/vZ0_0coNcwkE5mip46OyP6-NAbVdUNpb-qwuwcrvzuHwZzH_CKKP9XLgzm8NsKl5dM0ae8o5h0PKYr6i1JFUOvi_pqy5bPjYQXGQQLVFg3okIgWCNt4umau4flXp8DMwP1DeOSzBlg=w2400',
                 date: 1642355907728,
-              },
-              {
+            },
+            {
                 title: "2009 Chevy Impala ls",
                 url: "2009+chevy+impala+ls",
                 subtitle: "Made about $1000 on this gambel",
@@ -62,11 +64,12 @@ export const routes = [
                 bio: "Can't argue with success",
                 img: 'https://lh3.googleusercontent.com/HbbbBMCC3cky0rwzmRqWA_fuQxJ2wn-1n5MfqBnkQFs-IOlanh2Q9GIftYuy1BVPYy6Mno5PDv4kke1GDcJIPIvwQNIxcA8pwAxuR8K6V6SSmcjKR-4mp17fpj7p4z5cIYIwetwPcQ=w2400',
                 date: (1642355907728 + (((24 * 60 * 60 * 1000) * 7) * 5)),
-              },
+            },
         ], 
         url: '/repair',
-        subtitle: 'Articles written to provide general and vehical spacific repair procedures',
+        subtitle: 'Articles written to provide general as well as vehical spacific repair procedures',
         date: (1642355907728 + (((24 * 60 * 60 * 1000) * 7) * 2)),
+        img: 'https://lh3.googleusercontent.com/E6s0oK5x1Ff3PFR0MwVT_Lz7C5Mc0EBvUU-EY3GOpP1wzuY6scHOxzZIiJenmjD6wsevLJwMbJsRK-KLSb_-9mMyGnV_1a2Wq5zxcqIVcGdAhQacehn9gZToE3hIlRnFzHou2oTJmg=w2400',
     }, 
     {
         label: "Fabrication", 
@@ -84,9 +87,10 @@ export const routes = [
         url: '/fab',
         subtitle: "Fabrication projects I've taken on",
         date: (1642355907728 + (((24 * 60 * 60 * 1000) * 7) * 2)),
+        img: 'https://lh3.googleusercontent.com/ijejdxES9M-jtDx_QnZaOCeaffxux0wSGwy-JFNRhHwN7x3dMbJhTNbv4GymoMSUltJt_hNSfwUzqP-JXz9klPJbmPMI7B7LqZ9EX32kqp3PFMuYs2q4odp4zAiDZXdVI8iLjLpZKA=w2400',
     }, 
     {
-        label: "Tool Reviews", 
+        label: "Reviews", 
         options: [
             {
                 title: "2009 Chevy Impala ls",
@@ -98,12 +102,12 @@ export const routes = [
                 date: (1642355907728 + (((24 * 60 * 60 * 1000) * 7) * 5)),
             },
             {
-                title: "Vaccum filling the cooling system",
+                title: "The best cooling system tool I didn't know I needed",
                 url: "vaccum+filling+the+cooling+system",
-                subtitle: "Beats the hell out of burping it",
-                author: "Crazy Tech",
-                bio: "Can't argue with success",
-                img: 'https://lh3.googleusercontent.com/Tsi60nL7B3XGZA-vLYiJZYwLvxblcfZRT6rKdE7_st7m7lkIQApq_CT11bJAtM5uSe78x6FOwyEhLUnCl0Zl9R_YDKV5oNc4fC9Udl-4KzKHos9yLViSBPGgbBWHwpPJWKO7NZKwqw=w2400',
+                subtitle: "My only regret was not buying one sooner",
+                author: "Country Coder",
+                bio: "Always reach higher",
+                img: 'https://lh3.googleusercontent.com/pp00EhYg2Oxov0UW06yJIDARIT_1DaiP2cOHikpbgtYNamfEkM--mBSPeftn1Giz6pWaEIr51LkM7X7qUF7smhtD-CbPXv5xlQbVN0fO6QP16zBlrZJkxItHN5OTrVD_Grdh_yv7pg=w2400',
                 date: (1642355907728 + (((24 * 60 * 60 * 1000) * 7) * 2)),
 
             },
@@ -112,5 +116,6 @@ export const routes = [
         url: '/tools',
         subtitle: 'Reviews of specialty tools I own and use',
         date: (1642355907728 + (((24 * 60 * 60 * 1000) * 7) * 2)),
+        img:'https://lh3.googleusercontent.com/PPfUIV03ZHv5pI3bZ7kcAy8yTVENlG_AfaT_0ODGW3naxYF3e-6BW72-u6AF777EAYZbT3VbnnPHyry6BXdSmrupLjYNh2Hs3FCuLn-wzue2JskTtvShgadeawXHKx7aVjbNuCgMtg=w2400',
     },
 ]

@@ -1,10 +1,11 @@
-import { Card, CardContent, CardMedia } from '@mui/material';
+
 import React, { useEffect, useState } from 'react';
-import { Link, Outlet, useParams } from 'react-router-dom';
+import { Outlet, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { routes } from '../data/routes';
+import Tile from './Tile';
 
-function ArticleList({arr}) {
+function ArticleList({arr, label}) {
 
     const [state, setState] = useState([])
 
@@ -27,34 +28,19 @@ function ArticleList({arr}) {
                 <Outlet/>
                 :
                 <Container>
-                <h1>{arr}</h1>
-                <ListContainer>
-                    {
-                        state.map(article => (
-                            <Tile onClick={() => console.log(article.title)}>
-                                <Link to={`/${arr}/${article.url}`}>
-                                    <Card sx={{maxWidth: 300, minWidth: 300, minHeight: 300}}>
-                                    <CardMedia
-                                        component="img"
-                                        height="140"
-                                        image={article.img}
-                                        alt={article.alt}
-                                        />  
-                                    <CardContent >
-                                        {article.title}
-                                        <br />
-                                        {article.subtitle}
-                                        <br />
-                                        <span> <b>By:</b>  {article.author} <br />
-                                        <b>Posted:</b> {new Date(article.date).toDateString()} </span>
-                                    </CardContent>
-                                    </Card>
-                                </Link>
-                            </Tile>
-                        ))
-                    }
-                </ListContainer>
-            </Container>
+                    <h1>{label}</h1>
+                    <ListContainer>
+                        {
+                            state.map(article => (
+                                <Tile
+                                    obj={article}
+                                    arr={arr}
+                                    key={article.url}
+                                />
+                            ))
+                        }
+                    </ListContainer>
+                </Container>
             
             }   
         </Main>
@@ -65,7 +51,7 @@ export default ArticleList;
 
 const Main = styled.div`
     width: 100%;
-    
+    font-family: 'IBM Plex Serif', serif;
 `
 const Container = styled.div`
     display: flex;
@@ -77,11 +63,5 @@ const Container = styled.div`
 const ListContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
-    
-`
-const Tile = styled.div`
-    margin: 2%;
-    a {
-        text-decoration: none;
-    }
+    justify-content: center;
 `

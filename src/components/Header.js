@@ -6,10 +6,13 @@ import NavItem from './NavItem';
 import { Link } from 'react-router-dom';
 import { Box } from '@mui/system';
 import { routes } from '../data/routes';
+import { useStateValue } from '../context/stateProvider';
 
 function Header() {
 
     const [open, setOpen] = useState(false);
+
+    const [state, dispatch] = useStateValue();
     
     const handleClick = (bool) => {
         setOpen(bool);
@@ -41,9 +44,9 @@ function Header() {
                         <ButtonDrawer>
                         <List>
                             {
-                                routes.length > 0 && 
-                                routes.map(link => (
-                                    <Link to={link.url} onClick={() => handleClick(false)} > {link.label} </Link>
+                                state.routes.length > 0 && 
+                                state.routes.map(link => (
+                                    <Link to={link.url} onClick={() => handleClick(false)} key={link.label} > {link.label} </Link>
                                 ))
                             }
                         </List>
@@ -59,9 +62,9 @@ function Header() {
             {/* nav bar mode */}
             <NavContainer>
                 {
-                    routes.length > 0 && 
-                    routes.map(link => (
-                        <Link to={link.url}> {link.label} </Link>
+                    state.routes.length > 0 && 
+                    state.routes.map(link => (
+                        <Link to={link.url} key={link.label} > {link.label} </Link>
                     ))
                 }
             </NavContainer>

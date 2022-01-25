@@ -33,8 +33,9 @@ function ArticleList({arr, label}) {
                         {
                             state.map(article => (
                                 <Tile
-                                    article={article}
+                                    obj={article}
                                     arr={arr}
+                                    key={article.url}
                                 />
                             ))
                         }

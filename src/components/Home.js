@@ -1,10 +1,14 @@
 import { CardContent, Paper } from '@mui/material';
 import React from 'react';
 import styled from 'styled-components';
+import { useStateValue } from '../context/stateProvider';
 import { routes } from '../data/routes';
 import Tile from './Tile';
 
 function Home(props) {
+
+    const [state, dispatch] = useStateValue()
+
     return (
         <Main>
             <h1>Home</h1>
@@ -30,11 +34,12 @@ function Home(props) {
             >
                 <ListContainer>
                     {
-                        routes && 
-                        routes.map(route => (
+                        state.routes.length > 0 && 
+                        state.routes.map(route => (
                             <Tile
-                                article={route}
+                                obj={route}
                                 arr={route.url}
+                                key={route.url}
                             />
                         ))
                     }

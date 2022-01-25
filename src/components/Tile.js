@@ -3,43 +3,43 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-function Tile({article, arr}) {
+function Tile({obj, arr}) {
 
     const buildURL = () => {
         console.log('run')
         let url = ``
-        if (article.label) {
-            url = article.url
+        if (obj.label) {
+            url = obj.url
         } else {
-            url = `/${arr}/${article.url}`
+            url = `/${arr}/${obj.url}`
         }
         return url
     }
 
     return (
-        <Main onClick={() => console.log(article.title)}>
+        <Main onClick={() => console.log(obj.title)}>
             <Link to={buildURL()}>
                 <Card sx={{width: 300, height: 300}}>
                 <CardMedia
                     component="img"
                     height="140"
-                    image={article.img}
-                    alt={article.alt}
+                    image={obj.img}
+                    alt={obj.alt}
                     />  
                 <Content >
                     <TitleContainer>
                         <h3>
-                            {article.label ? article.label : article.title}
+                            {obj.label ? obj.label : obj.title}
                         </h3>
                         <h4 style={{color: "#6E7172"}}>
                             <i>
-                                {article.subtitle} 
+                                {obj.subtitle} 
                             </i> 
                         </h4>
                     </TitleContainer>
                     <AuthorContainer>
                         
-                        <b>{article.label ? "Last Post" : "Posted"}:</b> {new Date(article.date).toDateString()}
+                        <b>{obj.label ? "Last Post" : "Posted"}:</b> {new Date(obj.date).toDateString()}
                     </AuthorContainer>
                 </Content>
                 </Card>

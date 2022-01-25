@@ -4,36 +4,14 @@ import styled from 'styled-components';
 import { useParams } from 'react-router-dom'
 import { articles } from '../data/articles';
 import ListItem from './ListItem';
+import Carousel from './Carousel';
 
-function Article({title, subtitle, bio, avatar, img, date, author, imgAlt, body}) {
+function Article({key}) {
 
     const [state, setState] = useState({})
     let params = useParams()
 
-    let objs = [
-        {
-            format: 'sbs',
-            overview: "OverView",
-            tools: ['wrench', 'impact'],
-            steps: {0: "Drain and cover coolant in a clean container for reuse.", 1: "Remove upper radiator hose"},
-            keyPoints: ["Mating surfaces should be clean and smooth", "sdfhsjkhf sdjhfk"]
-        },
-        {
-            format: 'review',
-            overview: "OverView",
-            name: 'Master Pro thing',
-            body: "This is the main portion of the article",
-            pros: ["Mating surfaces should be clean and smooth", "sdfhsjkhf sdjhfk"],
-            cons: ["uuuuum", "yes"],
-        },
-        {
-            format: 'writeUp',
-            overview: "OverView",
-            body: "This is the main portion of the article",
-            tools: ['wrench', 'impact'],
-            keyPoints: ["Mating surfaces should be clean and smooth", "sdfhsjkhf sdjhfk"]
-        },
-    ]
+    
 
     const buildBody = () => {
         console.log(state.format)
@@ -78,7 +56,7 @@ function Article({title, subtitle, bio, avatar, img, date, author, imgAlt, body}
             case 'writeUp':
                 return (
                     <BodyContainer>
-
+                        {state.body}
                     </BodyContainer> 
                 )
             case 'review':
@@ -87,6 +65,41 @@ function Article({title, subtitle, bio, avatar, img, date, author, imgAlt, body}
                         <p>
                             {state.overview}
                         </p>
+                        <h3>Pros</h3>
+                        <ul>
+                            {
+                                state.pros &&
+                                state.pros.map((pro, i) => (
+                                    <ListItem 
+                                    key={i}
+                                    obj={pro}
+                                    />
+                                ))
+                            }
+                        </ul>
+                        <h3>Cons</h3>
+                        <ul>
+                            {
+                                state.cons &&
+                                state.cons.map((con, i) => (
+                                    <ListItem 
+                                    key={i}
+                                    obj={con}
+                                    />
+                                ))
+                            }
+                        </ul>
+                        <h3>In Conclusion</h3>
+                        <p>
+                            {state.conclusion}
+                        </p>
+                        {
+                            state.link ?
+                            <a href={state.link}>
+                                    Buy on Amazon
+                                </a>
+                            : ''
+                        }
                     </BodyContainer> 
                 )
             default:
@@ -102,35 +115,55 @@ function Article({title, subtitle, bio, avatar, img, date, author, imgAlt, body}
 
     useEffect(() => {
         console.log( "load")
-        articles && articles.filter(article => {
+        
+        articles && articles.filter((article) => {
             if (article.hasOwnProperty('url') && article.url === params.title) {
                 setState(article)
             }
         })
         
-    })
+    }, [])
 
     return (
         <Main>
-            <Paper>
+            <Paper >
             <ArticleHead>
                 <Container>
                     <h1>{state.title}</h1>
                     <h4><i> {state.subtitle} </i></h4>
-                    <AvatarContainer>
-                        <Avatar src={state.avatar} alt={state.author} />
-                        <div id="Author-Box">
-                            <h3> {state.author} </h3>
-                            <h5> {state.bio} </h5>
-                            <h6>Published: {new Date(state.date).toDateString()} </h6>
-                        </div>
-                    </AvatarContainer>
+                    <h6>Posted: {new Date(state.date).toDateString()} </h6>
                 </Container>
-                <img src={state.img} alt={state.imgAlt} />
+                {
+                    state.imgs ?
+                    state.imgs.length > 1 ?
+                    <Carousel
+                        arr= {state.imgs}
+                        alt={state.title}
+                    />
+                    :
+                    state.imgs.map((img, i) => (
+                        <img key={i} src={img} alt={state.title} />
+                    ))
+                    : ''
+                }
+                {
+                    state.link ?
+                        <a href={state.link}>
+                            Buy on Amazon
+                        </a>
+                    : ''
+                }
             </ArticleHead>
             {
                 buildBody()
             }
+            <AvatarContainer>
+                <Avatar src={state.avatar} alt={state.author} />
+                <div id="Author-Box">
+                    <h3> {state.author} </h3>
+                    <h5> {state.bio} </h5>
+                </div>
+            </AvatarContainer>
         </Paper>
         </Main>
     );
@@ -143,42 +176,44 @@ const Main = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 10%;
-    padding-left: 5%;
-    padding-right: 5%;
+    padding: 5%;
     p {
         padding-top: 5%;
-        padding-left: 7%;
-        padding-right: 7%;
         padding-bottom: 5%;
         font-size: 110%;
     }
     
 `
 const Container = styled.div`
+    text-align: center;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: space-around;
-    padding-left: 5%;
+    align-items: center;
     h4 {
-        padding-left: 2%;
         color: #808080;
     }
 `
 const ArticleHead = styled.div`
     display: flex;
-    justify-content: space-around;
+    flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
     padding-top: 2.5%;
+    a {
+        width: 100%;
+        text-align: center;
+        padding-top: 5%;
+    }
     img {
-        max-width: 40%;
-        
+        width: 60%;
+        padding: 5%;
     }
     @media (max-width: 600px) {
         flex-direction: column;
         img {
-            max-width: 90%;
+            width: 90%;
         }
     }
 `
@@ -186,9 +221,9 @@ const AvatarContainer = styled.div`
     display: flex;
     padding: 2%;
     align-items: center;
+    justify-content: center;
     #Author-Box {
-        padding-left: 5%;
-        padding-top: 5%; 
+        padding: 5%; 
     }
 `
 const BodyContainer = styled.div`

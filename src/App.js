@@ -3,36 +3,19 @@ import { Outlet,} from "react-router-dom";
 import styled from "styled-components";
 import Header from "./components/Header";
 import { useStateValue } from "./context/stateProvider";
-import { getData, writeData } from "./firebase/firestore";
+import useCollListener, { getData, writeData } from "./firebase/firestore";
 
 
 
 function App() {
 
   const [state, dispatch] = useStateValue()
- 
-  useEffect(() => {
-    console.log("Firestore Call Made");
 
-    const fun = async () => {
-      const load = await getData("routes")
-      dispatch(
-        {
-          type: "GET",
-          name: "routes",
-          load: load
-        }
-      )
-    }
-  
-    fun()
-    
-  },[])
-
+  useCollListener()
   // useEffect(() => {
   //   writeData("routes", {
   //       label: "Reviews",
-  //       order: 5, 
+  //       order: 5,
   //       options: [
   //           {
   //               title: "The best cooling system tool I didn't know I needed",
@@ -62,15 +45,15 @@ function App() {
   //             img: 'https://lh3.googleusercontent.com/QCg6K0dPt3w_t8Y8kHgeF9C_WFFUVMwoCuhdqnXHMHoXd0vL6WeS0GKHT0QST50jRVXffvlE4Y8wsaPyAbpBxFZzzZ6E-SOJ-DfIDJmnFJ5SuR5lLZB2SIz4S_ome2jvFCDEpY55Rw=w2400',
   //             date: (1642355907728 + ((24 * 60 * 60 * 1000) * 7)),
   //           },
-             
-  //       ], 
+
+  //       ],
   //       url: '/reviews',
   //       subtitle: 'Reviews of specialty tools and products I use in the shop',
   //       date: (1642355907728 + (((24 * 60 * 60 * 1000) * 7) * 2)),
   //       img:'https://lh3.googleusercontent.com/PPfUIV03ZHv5pI3bZ7kcAy8yTVENlG_AfaT_0ODGW3naxYF3e-6BW72-u6AF777EAYZbT3VbnnPHyry6BXdSmrupLjYNh2Hs3FCuLn-wzue2JskTtvShgadeawXHKx7aVjbNuCgMtg=w2400',
   //   })
   // },[])
-  
+
 
   return (
     <Main>
@@ -78,7 +61,7 @@ function App() {
       <Container>
         <Outlet/>
       </Container>
-      
+
     </Main>
   )
 }

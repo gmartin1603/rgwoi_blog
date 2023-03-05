@@ -1,6 +1,3 @@
-import { db } from "../firebase/firebaseApp"
-import { getData } from "../firebase/firestore"
-
 export const initState = {
     routes: [
 
@@ -15,7 +12,7 @@ const stateReducer = (state, action) => {
     // console.log(action)
     switch(action.type) {
 
-        case "GET":
+        case "SET-ROUTES":
             console.log(action)
             return (
                 {
@@ -24,11 +21,11 @@ const stateReducer = (state, action) => {
                 }
             )
             break;
-        default: 
+        default:
             console.log("No Form State Change")
             return state;
     }
-    
+
 }
 
 export default stateReducer

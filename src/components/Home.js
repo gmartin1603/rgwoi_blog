@@ -11,30 +11,28 @@ function Home(props) {
 
     return (
         <Main>
-            <h1>Home</h1>
             <CardContent
                 sx={{backgroundColor: 'rgb(33, 47, 60, 0.5)', margin: '2%', borderStyle:'outset', textAlign: 'center'}}
             >
             <p>
-                Welcome to Right Guy Workin On It! 
+                Welcome to Right Guy Workin On It!
                 Thank you for stopping and I sincerly
                 hope you find what you're looking for!
-                
+
             </p>
             <p>
-                Select a category from the nav  
-                or a tile below to browse 
-                that categories list of articles 
+                Select a category from the nav
+                or a tile below to browse
+                that categories list of articles
                 to read
             </p>
-        
       </CardContent>
             <Paper
-                sx={{padding: '3%'}}
+                sx={{padding: '3%', bgcolor:"rgb(9, 0, 12, .8)"}}
             >
                 <ListContainer>
                     {
-                        state.routes.length > 0 && 
+                        state.routes.length > 0 &&
                         state.routes.map(route => (
                             <Tile
                                 obj={route}
@@ -57,6 +55,7 @@ display: flex;
 flex-direction: column;
 align-items: center;
 padding: 5%;
+padding-top: 0;
 p {
     padding: 2% 2%;
     color: #B3B6B7;

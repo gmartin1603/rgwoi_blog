@@ -25,7 +25,7 @@ function Tile({obj, arr}) {
                     height="140"
                     image={obj.img}
                     alt={obj.alt}
-                    />  
+                    />
                 <Content >
                     <TitleContainer>
                         <h3>
@@ -33,12 +33,12 @@ function Tile({obj, arr}) {
                         </h3>
                         <h4 style={{color: "#6E7172"}}>
                             <i>
-                                {obj.subtitle} 
-                            </i> 
+                                {obj.subtitle}
+                            </i>
                         </h4>
                     </TitleContainer>
                     <AuthorContainer>
-                        
+
                         <b>{obj.label ? "Last Post" : "Posted"}:</b> {new Date(obj.date).toDateString()}
                     </AuthorContainer>
                 </Content>
@@ -53,10 +53,12 @@ export default Tile;
 const Main = styled.div`
     margin: 2%;
     max-width: 300px;
-    box-shadow: 5px 5px 10px #000033;
+    botder: 1px solid "rgb(9, 0, 12, .8)";
+    box-shadow: 5px 5px 10px "rgb(9, 0, 12, .8)";
+    transition: all .2s ease-in-out;
     :hover {
-        box-shadow: 10px 10px 20px #000033;
-        
+        box-shadow: 5px 10px 10px #00A36C;
+        scale: 1.1;
     }
     a {
         text-decoration: none;

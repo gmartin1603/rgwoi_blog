@@ -11,7 +11,7 @@ function Article({key}) {
     const [state, setState] = useState({})
     let params = useParams()
 
-    
+
 
     const buildBody = () => {
         console.log(state.format)
@@ -35,7 +35,7 @@ function Article({key}) {
                             {
                                 state.steps &&
                                 state.steps.map((step, i) => (
-                                    <ListItem 
+                                    <ListItem
                                     key={i}
                                     obj={step}
                                     />
@@ -51,13 +51,13 @@ function Article({key}) {
                                 ))
                             }
                         </ul>
-                    </BodyContainer> 
+                    </BodyContainer>
                 )
             case 'writeUp':
                 return (
                     <BodyContainer>
                         {state.body}
-                    </BodyContainer> 
+                    </BodyContainer>
                 )
             case 'review':
                 return (
@@ -70,7 +70,7 @@ function Article({key}) {
                             {
                                 state.pros &&
                                 state.pros.map((pro, i) => (
-                                    <ListItem 
+                                    <ListItem
                                     key={i}
                                     obj={pro}
                                     />
@@ -82,7 +82,7 @@ function Article({key}) {
                             {
                                 state.cons &&
                                 state.cons.map((con, i) => (
-                                    <ListItem 
+                                    <ListItem
                                     key={i}
                                     obj={con}
                                     />
@@ -100,7 +100,7 @@ function Article({key}) {
                                 </a>
                             : ''
                         }
-                    </BodyContainer> 
+                    </BodyContainer>
                 )
             default:
                 return (
@@ -115,13 +115,13 @@ function Article({key}) {
 
     useEffect(() => {
         console.log( "load")
-        
+
         articles && articles.filter((article) => {
             if (article.hasOwnProperty('url') && article.url === params.title) {
                 setState(article)
             }
         })
-        
+
     }, [])
 
     return (
@@ -182,7 +182,7 @@ const Main = styled.div`
         padding-bottom: 5%;
         font-size: 110%;
     }
-    
+
 `
 const Container = styled.div`
     text-align: center;
@@ -223,7 +223,7 @@ const AvatarContainer = styled.div`
     align-items: center;
     justify-content: center;
     #Author-Box {
-        padding: 5%; 
+        padding: 5%;
     }
 `
 const BodyContainer = styled.div`
@@ -232,7 +232,7 @@ const BodyContainer = styled.div`
         p::first-letter {
             font-size: 180%;
             font-weight: 600;
-            font-style: italic    
+            font-style: italic
         }
     }
 `
